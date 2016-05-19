@@ -32,8 +32,10 @@ public class DateTest {
 //		test06();
 		
 		// Test Locale
-		test07();
+//		test07();
 
+		// Test utc time
+		test08();
 	}
 	
 	
@@ -176,6 +178,46 @@ public class DateTest {
 		
 		System.out.println(MessageFormat.format(bundle.getString("msg"), "Jack", new SimpleDateFormat("YYYY-MM-dd").format(new Date())));
 		System.out.println(MessageFormat.format(bundle2.getString("msg"), "Jack", new SimpleDateFormat("YYYY-MM-dd").format(new Date())));
+		
+	}
+	
+	
+	public static void test08() {
+
+		// UTC
+		SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+		sdf1.setTimeZone(TimeZone.getTimeZone("UTC"));
+		
+		// Local
+		SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+
+		// GMT
+		SimpleDateFormat sdf3 = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+		sdf3.setTimeZone(TimeZone.getTimeZone("GMT+11"));
+
+		try {
+			Date d1 = sdf1.parse("2015-03-04T03:55:26");
+			Date d2 = sdf2.parse("2015-03-04T03:55:26");
+			Date d3 = sdf3.parse("2015-03-04T03:55:26");
+			System.out.println("UTC->LOCAL   :" + d1);
+			System.out.println("LOCAL->LOCAL :" + d2);
+			System.out.println("GMT+11->LOCAL:" + d3);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			Date d1 = sdf1.parse("2015-06-04T03:55:26");
+			Date d2 = sdf2.parse("2015-06-04T03:55:26");
+			Date d3 = sdf3.parse("2015-06-04T03:55:26");
+			System.out.println("UTC->LOCAL   :" + d1);
+			System.out.println("LOCAL->LOCAL :" + d2);
+			System.out.println("GMT+11->LOCAL:" + d3);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 	}
 	
