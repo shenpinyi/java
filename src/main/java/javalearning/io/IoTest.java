@@ -1,11 +1,17 @@
 package javalearning.io;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
+import java.io.Writer;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -18,7 +24,92 @@ public class IoTest {
 
 	public static void main(String[] args) {
 //		sortDw();
-		sortOutput();
+//		sortOutput();
+		
+//		testFileInputStream();
+		
+//		testReader();
+		
+//		testWriter();
+		
+//		testBufferedReader();
+		
+		testBufferedWriter();
+		
+	}
+	
+	private static void testBufferedWriter() {
+		try 
+		(
+			BufferedWriter writer = new BufferedWriter(new FileWriter("D:/temp/test20160525.csv"));
+			) 
+		{
+			writer.write("hello everyone");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+	}
+	
+	private static void testWriter() {
+		try 
+		(
+			Writer writer = new FileWriter("D:/temp/test20160525.csv");
+			) 
+		{
+			writer.write("hello");
+			writer.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			
+		}
+	}
+
+	private static void testBufferedReader() {
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader("D:/temp/F400result.csv"));
+			String s = null;
+			while ((s = reader.readLine()) != null) {
+				System.out.println(s);
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void testReader() {
+		try {
+//			Reader reader = new BufferedReader(new FileReader("D:/temp/F400result.csv"));
+			Reader reader = new FileReader("D:/temp/F400result.csv");
+			char[] cbuff = new char[1024];
+			
+			while (reader.read(cbuff) != -1) {
+				for (char c : cbuff){
+					System.out.print(c);
+				}
+			}
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	private static void testFileInputStream() {
+		try {
+			InputStream in = new FileInputStream("D:/temp/F400result.csv");
+			byte[] buff = new byte[1024];
+			while (in.read(buff) != -1) {
+				for (byte b : buff){
+					System.out.print(Byte.toString(b));
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private static void sortDw() {
