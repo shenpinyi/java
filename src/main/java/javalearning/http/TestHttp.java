@@ -14,6 +14,11 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.htmlparser.Node;
+import org.htmlparser.Parser;
+import org.htmlparser.util.NodeList;
+import org.htmlparser.util.ParserException;
+import org.htmlparser.util.SimpleNodeIterator;
 
 public class TestHttp {
 
@@ -27,13 +32,75 @@ public class TestHttp {
 
 	public static void main(String[] args) {
 
-		testGet();
+//		testGet();
+		
+		testParser();
 
 	}
+	
+	
+	private static void testParser() {
+		
+		try {
+			Parser parser = new Parser("https://www.google.com.au");
+			parser.setEncoding("gb2312");
+			NodeList list = parser.parse(null);
+			
+			StringBuffer buff = new StringBuffer();
+			processNodeList(list, null, 0, buff);
+			System.out.println(buff.toString());
+			
+		} catch (ParserException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private static void printTag(Node node, StringBuffer buff) {
+		
+//		StringToken st = new STringToken(node.getClass().);
+		
+	}
+
+	private static void processNodeList(NodeList list, String keyword, int level, StringBuffer buff) {
+		SimpleNodeIterator iterator = list.elements();
+		while (iterator.hasMoreNodes()) {
+			Node node = iterator.nextNode();
+			NodeList childList = node.getChildren();
+			buff.append("\r\n");
+			printSp(level, buff);
+			buff.append(">>>>>>>>" + node.getClass().getSimpleName());
+//			System.out.println(">>>>>>>[" + node.toHtml() + "]");
+			if (null == childList)
+			{
+				String result = node.toPlainTextString();
+//				if (keyword != null && result.indexOf(keyword) != -1)
+//					System.out.println(result);
+//				else if (keyword == null)
+//					buff.append(">>>>>>>" );
+//					printSp(level, buff);
+					buff.append("[" + result + "]" + "\r\n");
+			} //end if
+			else 
+			{
+				processNodeList(childList, keyword, level + 1, buff);
+			}//end else
+		}//end wile
+	}
+	
+	private static void printSp(int level, StringBuffer buff) {
+		
+		for (int i = 0; i < level; i ++) {
+			buff.append("      ");
+		}
+		
+	}
+	
 
 	private static void testGet() {
 
-		String url = "https://www.woolworths.com.au/";
+		String url = "https://www.woolworths.com.au/apis/ui/browse?aisle=fruit-veg&category=fresh-fruit&formatObject=%7B%22name%22:%22fresh+fruit%22%7D&pageNumber=1&pageSize=36&sortType=Name&url=%2FShop%2FBrowse%2Ffruit-veg%2Ffresh-fruit";
 		HttpClient httpClient = HttpClientBuilder.create().build();
 		HttpGet request = new HttpGet(url);
 		// request.addHeader("User-Agent", USER_AGENT);
