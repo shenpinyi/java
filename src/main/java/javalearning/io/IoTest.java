@@ -23,8 +23,8 @@ import java.util.TreeMap;
 public class IoTest {
 
 	public static void main(String[] args) {
-//		sortDw();
-//		sortOutput();
+		sortDw();
+		sortOutput();
 		
 //		testFileInputStream();
 		
@@ -34,7 +34,7 @@ public class IoTest {
 		
 //		testBufferedReader();
 		
-		testBufferedWriter();
+//		testBufferedWriter();
 		
 	}
 	
@@ -113,32 +113,37 @@ public class IoTest {
 	}
 	
 	private static void sortDw() {
-		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\UnitTesting\\DW_Files";
+//		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\UnitTesting\\DW_Files";
+		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task004debugAEM\\convert";
 		int fisrtLineIgnore = 1; // lines should be ignored at beginning
 		int lastLineIgnore = 0;  // lines should be ignored at last
-		int[] columns = {4, 1};
+		int[] columns = {16, 15};
 		int[] sorts = {0, 1}; // 0, asc, 1, desc
+		int[] ignoreFields = {17, 18};
 		
 		// list files with filter
-		File[] files1 = listFiles(path, "^((?!lcf).)*\\.csv$");
+		File[] files1 = listFiles(path, "^DW((?!lcf).)*\\.csv$");
 		for (int i = 0; i < files1.length; i ++) {
 			System.out.println(files1[i]);
-			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts);
+			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, ignoreFields);
 		}
 	}
 	
 	private static void sortOutput() {
-		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\UnitTesting\\Output_Files";
+//		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\UnitTesting\\Output_Files";
+		
+		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task004debugAEM\\convert";
 		int fisrtLineIgnore = 1; // lines should be ignored at beginning
 		int lastLineIgnore = 0;  // lines should be ignored at last
-		int[] columns = {5, 2};
+		int[] columns = {17, 16};
 		int[] sorts = {0, 1}; // 0, asc, 1, desc
+		int[] ignoreFields = {0, 19, 20};
 		
 		// list files with filter
-		File[] files1 = listFiles(path, "^((?!lcf).)*\\.csv$");
+		File[] files1 = listFiles(path, "^COMPLETE((?!lcf).)*\\.csv$");
 		for (int i = 0; i < files1.length; i ++) {
 			System.out.println(files1[i]);
-			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts);
+			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, ignoreFields);
 		}
 	}
 	
@@ -159,7 +164,7 @@ public class IoTest {
 	}
 	
 	private static void sortCsv(String fileName, int fisrtLineIgnore,
-			int lastLineIgnore, int[] columns, int[] sorts) {
+			int lastLineIgnore, int[] columns, int[] sorts, int[] ignoreFields) {
 		
 		List <String> lines = null;
 		
@@ -189,10 +194,27 @@ public class IoTest {
 		StringBuffer buff = new StringBuffer();
 		
 		for (String[] fields : list) {
-			for (int i = 0; i < fields.length - 1; i ++) {
+			
+			for (int i = 0; i < fields.length; i ++) {
+				boolean isIgnore = false;
+				
+				for (int j = 0; j < ignoreFields.length; j++) {
+					if (i == ignoreFields[j]) {
+						isIgnore = true;
+					}
+				}
+				
+				if (isIgnore) { //delete useless column
+					continue;
+				}
+				
+				
 				buff.append(fields[i] + ",");
 			}
-			buff.append(fields[fields.length - 1] + "\r\n");
+			
+			buff.delete(buff.length() - 1, buff.length());
+			
+			buff.append("\r\n");
 		}
 		
 		try {
