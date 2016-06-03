@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -23,8 +24,16 @@ import java.util.TreeMap;
 public class IoTest {
 
 	public static void main(String[] args) {
-		sortDw();
-		sortOutput();
+//		dividDw();
+//		sortDw();
+//		sortOutput();
+//		mergeFiles();
+//		sortMerge();
+//		addSrdPrefix();
+		takeoffPrefix("_", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test16\\complete\\");
+		takeoffPrefix("DW-", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test16\\dw\\");
+		
+		takeoffSuffix("_20160602.{6}", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test16\\complete\\");
 		
 //		testFileInputStream();
 		
@@ -35,6 +44,233 @@ public class IoTest {
 //		testBufferedReader();
 		
 //		testBufferedWriter();
+		
+	}
+	
+	private static void takeoffPrefix(String prefix, String path) {
+		File[] files = listFiles(path, "^" + prefix +".*");
+		for (int i = 0; i < files.length; i ++) {
+			files[i].renameTo(new File(path + files[i].getName().substring(prefix.length())));
+
+		}		
+	}
+	
+	private static void takeoffSuffix(String suffix, String path) {
+		File[] files = listFiles(path, "^.*" + suffix +"\\.csv\\.parse");
+		for (int i = 0; i < files.length; i ++) {
+			//files[i].renameTo(new File(path + files[i].getName().substring(prefix.length())));
+			System.out.println(files[i].getName().replaceFirst(suffix, ""));
+			//files[i].renameTo(new File(path + files[i].getName().replaceFirst(suffix, "")));
+
+		}		
+	}
+	
+	
+	private static void sortMerge() {
+		
+//		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\UnitTesting\\DW_Files";
+		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task004debugAEM\\convert";
+		int fisrtLineIgnore = 0; // lines should be ignored at beginning
+		int lastLineIgnore = 0;  // lines should be ignored at last
+		
+		/*
+		0	914407312
+		1	569014111
+		2	OTHER_OTHER
+		3	Open CA
+		4	1411
+		5	011976000
+		6	Australia/Sydney
+		7
+		8	9999
+		9	0394197931
+		0
+		1
+		2	2016-05-10T21:34:44
+		3	2016-05-11T00:04:45
+		4	9002
+		5	10
+		6	PSTN
+		7	S49901C84255
+		*/
+		int[] columns = {0, 2};  //use the origin index to sort
+		int[] sorts = {0, 1}; // 0, asc, 1, desc
+		int[] writeFields = {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17};
+		
+		// list files with filter
+		File[] files1 = listFiles(path, ".*\\.merge$");
+		for (int i = 0; i < files1.length; i ++) {
+			System.out.println(files1[i]);
+			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, writeFields);
+		}
+	}
+	
+	private static void mergeFiles() {
+		
+		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task004debugAEM\\convert";
+		
+		File[] files = listFiles(path, "^COMPLETE((?!lcf).)*\\.csv.parse$");
+		
+		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\COMPLETE.csv.merge"));
+
+			for (int i = 0; i < files.length; i++) {
+				BufferedReader reader = new BufferedReader(new FileReader(files[i].getAbsolutePath()));
+				String line = null;
+				while ((line = reader.readLine()) != null) {
+					writer.write(line + "\r\n");
+				}
+				writer.flush();
+			}
+			
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+        files = listFiles(path, "^DW((?!lcf).)*\\.csv.parse$");
+		
+		
+		try {
+			BufferedWriter writer = new BufferedWriter(new FileWriter(path + "\\DW.csv.merge"));
+
+			for (int i = 0; i < files.length; i++) {
+				BufferedReader reader = new BufferedReader(new FileReader(files[i].getAbsolutePath()));
+				String line = null;
+				while ((line = reader.readLine()) != null) {
+					writer.write(line + "\r\n");
+				}
+				writer.flush();
+			}
+			
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+	
+	
+	private static void dividDw() {
+		String before = "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\DW\\DW-oca02_20160511.csv";
+		
+		Map <String, StringBuffer> dw = new HashMap <String, StringBuffer>();
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(before));
+			String line;
+			int countCdr = 0, countFile = 0;
+			while ((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				if (fields.length != 20) {
+					System.out.println("line format error, line=" + line);
+					continue;
+				}
+				
+				countCdr++;
+				
+				if (dw.containsKey(fields[18])) {
+					dw.get(fields[18]).append(line + "\r\n");
+				} else {
+					countFile++;
+					StringBuffer fileBuff = new StringBuffer();
+					fileBuff.append(line + "\r\n");
+					dw.put(fields[18], fileBuff);
+				}
+			}
+			
+			System.out.println(String.format("%d records, %d files loaded", countCdr, countFile));
+			
+			for (String filename : dw.keySet()) {
+				String newfile = filename.replaceAll(".xml", "");
+				newfile = newfile + ".csv";
+				BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\99 Projects\\04 Amdocs\\BMS\\task005\\DW\\DW-" + newfile));
+				writer.write(dw.get(filename).toString());
+				writer.flush();
+				writer.close();
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+	}
+	
+	
+	private static void addSrdPrefix() {
+		String before = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\newref05small.csv";
+		
+		Map <String, List<StringBuffer>> dw = new HashMap <String, List<StringBuffer>>();
+		
+		int maxLen = 0;
+		
+		try {
+			BufferedReader reader = new BufferedReader(new FileReader(before));
+			String line;
+			StringBuffer newbuff = new StringBuffer();
+			int MAX_PREFIX = 10; 
+			while ((line = reader.readLine()) != null) {
+				String[] fields = line.split(",");
+				if (fields.length < 9) {
+					System.out.println("Incorrect line, line=" + line);
+					continue;
+				}
+				
+				String resourceId = fields[2];
+				String altResourceId = fields[3];
+				
+				char[] idChars = resourceId.toCharArray();
+				char[] altChars = altResourceId.toCharArray();
+				char[] preChars = new char[100];
+				
+				for (int i= 0; i < 
+						Math.min(MAX_PREFIX, Math.min(idChars.length, altChars.length)); i ++) {
+					if (idChars[i] == altChars[i]) {
+						preChars[i] = idChars[i];
+						if (i > maxLen) {
+							maxLen = i;
+							System.out.println(resourceId + ";" + altResourceId);
+						}
+					} else {
+						break;
+					}
+				}
+				
+				for (int i = 0; i < preChars.length; i++) {
+					if (preChars[i] == 0) {
+						fields[8] = String.valueOf(preChars, 0, i);
+						break;
+					}
+				}
+				
+				for (int i = 0; i < fields.length; i ++) {
+					newbuff.append(fields[i]);
+//					System.out.print(fields[i]);
+					if (i != fields.length - 1) {
+						newbuff.append(",");
+//						System.out.print(",");
+					} else {
+						newbuff.append("\r\n");
+//						System.out.print("#\r\n");
+					}
+				}
+			}
+			
+			BufferedWriter writer = new BufferedWriter(new FileWriter("D:\\99 Projects\\04 Amdocs\\BMS\\task001\\newref05new.csv"));
+			writer.write(newbuff.toString());
+			writer.flush();
+			writer.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		System.out.println(maxLen + 1);
+		
+		
 		
 	}
 	
@@ -115,17 +351,41 @@ public class IoTest {
 	private static void sortDw() {
 //		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task001\\UnitTesting\\DW_Files";
 		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task004debugAEM\\convert";
-		int fisrtLineIgnore = 1; // lines should be ignored at beginning
+		int fisrtLineIgnore = 0; // lines should be ignored at beginning
 		int lastLineIgnore = 0;  // lines should be ignored at last
-		int[] columns = {16, 15};
+		
+		/*
+		0(primary ASC-0)->16 	914580584
+		1->0	Open CA
+		2->1	1423
+		3->2	0733379955
+		4->3	Australia/Brisbane
+		5->4	
+		6->5	1414
+		7->6	0458458316
+		8->7	
+		9->8	
+		10->9	2016-05-10T23:58:44
+		11->10	2016-05-11T00:01:08
+		12->11	144
+		13->12	243
+		14->13	GSM
+		15->14	S106802C284985
+		16(secondary DESC-1)->15 	ON_OTHER
+		17->17	569006942
+		18->NA	oca02-kent-syd_20160511000108.xml
+		19->NA	oca02-kent-syd
+		 * */
+		
+		int[] columns = {0, 16};  //use the origin index to sort
 		int[] sorts = {0, 1}; // 0, asc, 1, desc
-		int[] ignoreFields = {17, 18};
+		int[] writeFields = {0,17,16,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 		
 		// list files with filter
 		File[] files1 = listFiles(path, "^DW((?!lcf).)*\\.csv$");
 		for (int i = 0; i < files1.length; i ++) {
 			System.out.println(files1[i]);
-			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, ignoreFields);
+			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, writeFields);
 		}
 	}
 	
@@ -135,15 +395,39 @@ public class IoTest {
 		String path = "D:\\99 Projects\\04 Amdocs\\BMS\\task004debugAEM\\convert";
 		int fisrtLineIgnore = 1; // lines should be ignored at beginning
 		int lastLineIgnore = 0;  // lines should be ignored at last
+		
+		/*
+		0->NA
+		1->0	Open CA
+		2->1	1423
+		3->2	0399121231
+		4->3	Australia/Sydney
+		5->4	S97612C266189
+		6->5	1414
+		7->6	0385184465
+		8->7	
+		9->8	
+		10->9	2016-05-10T23:52:23
+		11->10	2016-05-11T00:01:08
+		12->11	525
+		13->12	243
+		14->13	PSTN
+		15->14	
+		16(secondary DESC)->15	ON_OTHER
+		17(primary ASC)->16	914568768
+		18->17	569006941
+		19->NA	oca02-kent-syd_20160511000108TEST15.xml
+		20->NA	oca02-kent-syd
+		*/
 		int[] columns = {17, 16};
 		int[] sorts = {0, 1}; // 0, asc, 1, desc
-		int[] ignoreFields = {0, 19, 20};
+		int[] writeFields = {17,18,16,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
 		
 		// list files with filter
 		File[] files1 = listFiles(path, "^COMPLETE((?!lcf).)*\\.csv$");
 		for (int i = 0; i < files1.length; i ++) {
 			System.out.println(files1[i]);
-			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, ignoreFields);
+			sortCsv(files1[i].getAbsolutePath(), fisrtLineIgnore, lastLineIgnore, columns, sorts, writeFields);
 		}
 	}
 	
@@ -164,7 +448,7 @@ public class IoTest {
 	}
 	
 	private static void sortCsv(String fileName, int fisrtLineIgnore,
-			int lastLineIgnore, int[] columns, int[] sorts, int[] ignoreFields) {
+			int lastLineIgnore, int[] columns, int[] sorts, int[] writeFields) {
 		
 		List <String> lines = null;
 		
@@ -176,7 +460,12 @@ public class IoTest {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
+		try {
+			lines.addAll(Files.readAllLines(Paths.get(fileName + "#1")));
+		} catch (IOException e) {
+		}
+
 		for (int i = 0; i < lines.size() && i < fisrtLineIgnore; i++) {
 			head.add(lines.remove(0));
 		}
@@ -195,21 +484,17 @@ public class IoTest {
 		
 		for (String[] fields : list) {
 			
-			for (int i = 0; i < fields.length; i ++) {
-				boolean isIgnore = false;
+			
+			
+			// write every field to new line
+			for (int i = 0; i < writeFields.length; i ++) {
 				
-				for (int j = 0; j < ignoreFields.length; j++) {
-					if (i == ignoreFields[j]) {
-						isIgnore = true;
-					}
+				if (fields.length < writeFields[i] + 1) {
+					buff.append(",");
+				} else {
+					buff.append(fields[writeFields[i]] + ",");
 				}
 				
-				if (isIgnore) { //delete useless column
-					continue;
-				}
-				
-				
-				buff.append(fields[i] + ",");
 			}
 			
 			buff.delete(buff.length() - 1, buff.length());

@@ -24,5 +24,7 @@
 	<classpathentry kind="lib" path="lib/junit.jar"/>
 	<classpathentry kind="lib" path="lib/sax2.jar"/>
 	<classpathentry kind="lib" path="lib/thumbelina.jar"/>
+	<classpathentry kind="lib" path="lib/xerces-1.4.0.jar"/>
+	<classpathentry kind="lib" path="lib/xerces-impl-2.9.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
