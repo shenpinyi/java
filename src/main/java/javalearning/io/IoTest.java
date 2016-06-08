@@ -25,17 +25,18 @@ public class IoTest {
 
 	public static void main(String[] args) {
 //		dividDw();
-//		sortDw();
-//		sortOutput();
+		sortDw();
+		sortOutput();
 //		mergeFiles();
 //		sortMerge();
 //		addSrdPrefix();
-		takeoffPrefix("_", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test16\\complete\\");
-		takeoffPrefix("DW-", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test16\\dw\\");
-		
-		takeoffSuffix("_20160602.{6}", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test16\\complete\\");
+		takeoffPrefix("COMPLETE_", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test23\\complete\\");
+		takeoffPrefix("DW-", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test22\\dw\\");
+//		
+		takeoffSuffix("_20160607.{6}", "D:\\99 Projects\\04 Amdocs\\BMS\\task005\\test23\\complete\\");
 		
 //		testFileInputStream();
+		
 		
 //		testReader();
 		
@@ -59,8 +60,8 @@ public class IoTest {
 		File[] files = listFiles(path, "^.*" + suffix +"\\.csv\\.parse");
 		for (int i = 0; i < files.length; i ++) {
 			//files[i].renameTo(new File(path + files[i].getName().substring(prefix.length())));
-			System.out.println(files[i].getName().replaceFirst(suffix, ""));
-			//files[i].renameTo(new File(path + files[i].getName().replaceFirst(suffix, "")));
+//			System.out.println(files[i].getName().replaceFirst(suffix, ""));
+			files[i].renameTo(new File(path + files[i].getName().replaceFirst(suffix, "")));
 
 		}		
 	}
@@ -451,6 +452,7 @@ public class IoTest {
 			int lastLineIgnore, int[] columns, int[] sorts, int[] writeFields) {
 		
 		List <String> lines = null;
+		List <String> lines2 = null;
 		
 		List <String> head = new ArrayList<>();
 		List <String> tail = new ArrayList<>();
@@ -461,23 +463,32 @@ public class IoTest {
 			e.printStackTrace();
 		}
 
-		try {
-			lines.addAll(Files.readAllLines(Paths.get(fileName + "#1")));
-		} catch (IOException e) {
-		}
-
 		for (int i = 0; i < lines.size() && i < fisrtLineIgnore; i++) {
 			head.add(lines.remove(0));
 		}
-		
+
+
 		for (int i = 0; i < lines.size() && i < lastLineIgnore; i++) {
 			tail.add(lines.remove(lines.size() - 1));
 		}
-		
+
+		try {
+			lines2 = Files.readAllLines(Paths.get(fileName + "#1"));
+			for (int i = 0; i < lines2.size() && i < fisrtLineIgnore; i++) {
+				lines2.remove(0);
+			}
+			for (int i = 0; i < lines2.size() && i < lastLineIgnore; i++) {
+				lines2.remove(lines2.size() - 1);
+			}
+			lines.addAll(lines2);
+		} catch (IOException e) {
+		}
+
 		List<String[]> list = new ArrayList<>();
 		for (int i = 0; i < lines.size(); i ++) {
 			list.add(lines.get(i).split(","));
 		}
+		
 		
 		list = sortCsv(columns, sorts, 0, list);
 		StringBuffer buff = new StringBuffer();
