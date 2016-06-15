@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.metaswitch.com/cfs/billing/V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" compatibility="2">
+<FileHeader seqnum="9">
+<EquipmentType>Metaswitch AGC &amp; MGC</EquipmentType>
+<EquipmentId></EquipmentId>
+<CreateTime>1464647430801</CreateTime>
+</FileHeader>
+<CDRs>
+<Call seqnum="0000000001" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="AMGC281805753045240" connected="true">
+<CallType>Unknown</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="ln">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>241870113</InternalIndex>
+<OrigParty xsi:type="NetworkTrunkPartyType" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip" trunkname="Terminating trunk from Call Feature Server sglebvcfs01">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+<DestTrunkGroupLabel>NATGLB4ROSOZ5</DestTrunkGroupLabel>
+</TrunkGroup>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<SIPCallId>0E16CEC4@10.136.228.10</SIPCallId>
+<SignalingType variant="ITUT (1997, SIP-I)">SIP-I</SignalingType>
+<SourceAddresses>
+<SigAddress>10.136.228.10</SigAddress>
+<MediaIPAddr>10.136.229.35</MediaIPAddr>
+<MediaPort>8002</MediaPort>
+</SourceAddresses>
+<DestAddresses>
+<SigAddress>10.136.230.20</SigAddress>
+</DestAddresses>
+<RequestURI>sip:1456420407001456@10.136.230.20:5060;transport=udp;user=phone;dtg=NATGLB4ROSOZ5</RequestURI>
+<From>sip:290960452@TPG-cCFS;user=phone</From>
+<To>sip:1456420407001456@10.136.230.20;user=phone</To>
+<Contact>sip:290960452@10.136.228.10:5060;user=phone</Contact>
+<Via>SIP/2.0/UDP 10.136.228.10:5060;rport;branch=z9hG4bK-b99bbbc23702d96035ba3f231e421ce11-10.136.228.10-1</Via>
+<PAssertedIdentity>sip:290960452@TPG-cCFS;user=phone;cpc=ordinary</PAssertedIdentity>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="isup" trunkaccounting="NATGLB4ROSOZ5" trunkname="NATGLB4ROSOZ5">
+<TrunkGroupId>1</TrunkGroupId>
+<TrunkMemberId>42</TrunkMemberId>
+<DestTrunkGroupLabel>NATGLB4ROSOZ5</DestTrunkGroupLabel>
+</TrunkGroup>
+<SignalingType variant="Australian (ISUP)">ISUP</SignalingType>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">1456420407001456</RequestedAddr>
+<DestAddr type="e164">+1456420407001456</DestAddr>
+<RoutedAddr type="unknown">1456420407001456</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>14141</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>3.1kHzAudio</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CE4E6000000013</icidvalue>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647700728</IcSeizeTime>
+<OgSeizeTime>1464647700755</OgSeizeTime>
+<RingingTime>1464647701002</RingingTime>
+<ConnectTime>1464647701013</ConnectTime>
+<DisconnectTime>1464647706167</DisconnectTime>
+<PostDialDelay>274</PostDialDelay>
+<PGRD>247</PGRD>
+<PGAD>258</PGAD>
+<ReleaseTime>1464647706167</ReleaseTime>
+<CompleteTime>1464647706168</CompleteTime>
+<SIPIBodyReleaseCause>16</SIPIBodyReleaseCause>
+</Call>
+<Call seqnum="0000000002" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="AMGC281810048023252" connected="true">
+<CallType>Unknown</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="ln">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>241870114</InternalIndex>
+<OrigParty xsi:type="NetworkTrunkPartyType" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip" trunkname="Terminating trunk from Call Feature Server sglebvcfs02">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+<DestTrunkGroupLabel>NATGLB4ROSOZ5</DestTrunkGroupLabel>
+</TrunkGroup>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<SIPCallId>38D4564E@10.136.228.20</SIPCallId>
+<SignalingType variant="ITUT (1997, SIP-I)">SIP-I</SignalingType>
+<SourceAddresses>
+<SigAddress>10.136.228.20</SigAddress>
+<MediaIPAddr>10.136.229.36</MediaIPAddr>
+<MediaPort>8002</MediaPort>
+</SourceAddresses>
+<DestAddresses>
+<SigAddress>10.136.230.20</SigAddress>
+</DestAddresses>
+<RequestURI>sip:1456420414001456@10.136.230.20:5060;transport=udp;user=phone;dtg=NATGLB4ROSOZ5</RequestURI>
+<From>sip:290960452@TPG-cCFS;user=phone</From>
+<To>sip:1456420414001456@10.136.230.20;user=phone</To>
+<Contact>sip:290960452@10.136.228.20:5060;user=phone</Contact>
+<Via>SIP/2.0/UDP 10.136.228.20:5060;rport;branch=z9hG4bK-217140c15406d333e7fbbff415a009a81-10.136.228.20-1</Via>
+<PAssertedIdentity>sip:290960452@TPG-cCFS;user=phone;cpc=ordinary</PAssertedIdentity>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="isup" trunkaccounting="NATGLB4ROSOZ5" trunkname="NATGLB4ROSOZ5">
+<TrunkGroupId>1</TrunkGroupId>
+<TrunkMemberId>42</TrunkMemberId>
+<DestTrunkGroupLabel>NATGLB4ROSOZ5</DestTrunkGroupLabel>
+</TrunkGroup>
+<SignalingType variant="Australian (ISUP)">ISUP</SignalingType>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">1456420414001456</RequestedAddr>
+<DestAddr type="e164">+1456420414001456</DestAddr>
+<RoutedAddr type="unknown">1456420414001456</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>14141</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>3.1kHzAudio</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CE783400000014</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647711444</IcSeizeTime>
+<OgSeizeTime>1464647711471</OgSeizeTime>
+<RingingTime>1464647711724</RingingTime>
+<ConnectTime>1464647711724</ConnectTime>
+<DisconnectTime>1464647716957</DisconnectTime>
+<PostDialDelay>280</PostDialDelay>
+<PGRD>253</PGRD>
+<PGAD>253</PGAD>
+<ReleaseTime>1464647716957</ReleaseTime>
+<CompleteTime>1464647716957</CompleteTime>
+<SIPIBodyReleaseCause>16</SIPIBodyReleaseCause>
+</Call>
+</CDRs>
+<FileFooter>
+<LastModTime>1464647716977</LastModTime>
+<NumCDRs>2</NumCDRs>
+<DataErroredCDRs>0</DataErroredCDRs>
+<WriteErroredCDRs>0</WriteErroredCDRs>
+</FileFooter>
+</File>

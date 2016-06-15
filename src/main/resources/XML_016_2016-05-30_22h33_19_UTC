@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.metaswitch.com/cfs/billing/V1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" compatibility="2">
+<FileHeader seqnum="16">
+<EquipmentType>Metaswitch CFS</EquipmentType>
+<EquipmentId></EquipmentId>
+<CreateTime>1464647599488</CreateTime>
+</FileHeader>
+<CDRs>
+<Call seqnum="0000000001" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281651134221920" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300576</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAF72rJiQJj6BAxDvLFwXH4dznnS7JeZqlmIqWog1IHT3E1LP2goYijJH4pWXeBEQgdSLR6mTRvK7lNBuckymNow-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>D4840543@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">132004</RequestedAddr>
+<DestAddr type="e164">+61132004</DestAddr>
+<RoutedAddr type="national">14142132004</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CE4E6000000013</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647700064</IcSeizeTime>
+<OgSeizeTime>1464647700314</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647701093</ConnectTime>
+<DisconnectTime>1464647706121</DisconnectTime>
+<ReleaseTime>1464647706121</ReleaseTime>
+<CompleteTime>1464647706121</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">0</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">100</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">0</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000002" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281655429189571" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="ln">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300577</InternalIndex>
+<OrigParty xsi:type="NetworkTrunkPartyType" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<SIPCallId>ESGSCA1482575967@172.16.131.4</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkname="IFR-Trunk for MGCF on server amgc02">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>0E16CEC4@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">141420407001456</RequestedAddr>
+<DestAddr type="e164">+61407001456</DestAddr>
+<RoutedAddr type="unknown">1456420407001456</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CE4E6000000013</icidvalue>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647700419</IcSeizeTime>
+<OgSeizeTime>1464647700720</OgSeizeTime>
+<RingingTime>1464647701040</RingingTime>
+<ConnectTime>1464647701054</ConnectTime>
+<DisconnectTime>1464647706160</DisconnectTime>
+<ReleaseTime>1464647706160</ReleaseTime>
+<CompleteTime>1464647706160</CompleteTime>
+<UDAs><UDA id="1">0</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">0</UDA>
+<UDA id="4">0</UDA>
+<UDA id="5">1456</UDA>
+<UDA id="6">42</UDA>
+<UDA id="7">0</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">65</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">1</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000003" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281659724167221" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300578</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAHupIV+1tjwf7Qdj24nZbAIHhRlZDi5ApTAJHZGYWMsFW4y1dKvWY2wA29sz7xjwhNgJfPNCBMQ++RFBGXt4oRc-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>A492F519@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">132005</RequestedAddr>
+<DestAddr type="e164">+61132005</DestAddr>
+<RoutedAddr type="national">14142132005</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CE783400000014</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647710773</IcSeizeTime>
+<OgSeizeTime>1464647711022</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647711811</ConnectTime>
+<DisconnectTime>1464647716912</DisconnectTime>
+<ReleaseTime>1464647716912</ReleaseTime>
+<CompleteTime>1464647716912</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">0</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">100</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">0</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000004" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281664019149267" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300579</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAOFNJKpmFdY+vS2TGxCVvJhNpueTxLoWcgve0KkNLw45VEacDSY302r6QjcDJa9yFjw2XsYOgs7Lh5iVQtdwlXc-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkname="IFR-Trunk for MGCF on server amgc02">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>0C4EDE2A@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">0401001456</RequestedAddr>
+<DestAddr type="e164">+61401001456</DestAddr>
+<RoutedAddr type="unknown">1411420401001456</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CEB1D300000015</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647725523</IcSeizeTime>
+<OgSeizeTime>1464647725911</OgSeizeTime>
+<RingingTime>1464647726231</RingingTime>
+<ConnectTime>1464647726245</ConnectTime>
+<DisconnectTime>1464647731432</DisconnectTime>
+<ReleaseTime>1464647731432</ReleaseTime>
+<CompleteTime>1464647731432</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">1411</UDA>
+<UDA id="6">42</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">65</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">1</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000005" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281668314131996" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300580</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAMou6u2OJpTFMBo72C7XyF0hKH6Z4bKqIfo3aVtaowbUhQQk+9yhAjyj/Jwhlpr30zIBXyAhaLnYuFhDP4Vs8xc-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="CTS_SAMPLE" trunkname="CTS-MS-Test-Trunk">
+<TrunkGroupId>9999</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>6559003E@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">0884821268</RequestedAddr>
+<DestAddr type="e164">+61999884821268</DestAddr>
+<RoutedAddr type="national">0884821268</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>123456</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CEEE1B00000016</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647740956</IcSeizeTime>
+<OgSeizeTime>1464647741261</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647741273</ConnectTime>
+<DisconnectTime>1464647746573</DisconnectTime>
+<ReleaseTime>1464647746573</ReleaseTime>
+<CompleteTime>1464647746573</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">12610031</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">190</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">1</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000006" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281672609113450" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300581</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAABTy4Imuh/7pa85On7iLOMQWVLlm0or0PO7Lgui1rN7fsfiWculBqgiWDG0MjhWOIvsqY9d6jBK8l9wJFNtpWac-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="CTS_SAMPLE" trunkname="CTS-MS-Test-Trunk">
+<TrunkGroupId>9999</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>6AF714E4@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">0891951268</RequestedAddr>
+<DestAddr type="e164">+61999891951268</DestAddr>
+<RoutedAddr type="national">0891951268</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>123456</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CF256900000017</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647755114</IcSeizeTime>
+<OgSeizeTime>1464647755419</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647755432</ConnectTime>
+<DisconnectTime>1464647761075</DisconnectTime>
+<ReleaseTime>1464647761074</ReleaseTime>
+<CompleteTime>1464647761075</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">12610031</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">190</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">1</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000007" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281676904094411" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300582</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAHkKzkMAyUMNOv7uiqSvEOO62SQAwS+jQikwfmbSl+kG5EaniRyWealIuPMgp+fHdMFiwxurlYcwYB2T9iG8eyU-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>84BC2C90@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">1300286224</RequestedAddr>
+<DestAddr type="e164">+611300286224</DestAddr>
+<RoutedAddr type="national">141421300286224</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CF5ACB00000018</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647768779</IcSeizeTime>
+<OgSeizeTime>1464647769028</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647769468</ConnectTime>
+<DisconnectTime>1464647774544</DisconnectTime>
+<ReleaseTime>1464647774544</ReleaseTime>
+<CompleteTime>1464647774544</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">0</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">100</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">0</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000008" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281681199075214" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300583</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAHER99QvOvi27ll3WP7hb8oJC9GTjgXbNi3d+1GOkzxMUpjMazBeLpiD1p34amgitoGd/XQO1o6K7JyTumwYwGI-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>3B3B3AA0@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">1300286225</RequestedAddr>
+<DestAddr type="e164">+611300286225</DestAddr>
+<RoutedAddr type="national">141421300286225</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CF8F8E00000019</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647782286</IcSeizeTime>
+<OgSeizeTime>1464647782536</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647783242</ConnectTime>
+<DisconnectTime>1464647788905</DisconnectTime>
+<ReleaseTime>1464647788905</ReleaseTime>
+<CompleteTime>1464647788905</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">0</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">100</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">0</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000009" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281685494056540" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300584</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAACltqDuLEZwacDkCWkEyJjMXnH9agWZSxG1ZyjdrO3czdpG2ZZQB+EsEnR/qp8AC4WZsaDbYR1q+OWyclcWVd/s-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>68CF57E0@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">1800219314</RequestedAddr>
+<DestAddr type="e164">+611800219314</DestAddr>
+<RoutedAddr type="national">141421800219314</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CFC65C0000001A</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647796316</IcSeizeTime>
+<OgSeizeTime>1464647796566</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647797340</ConnectTime>
+<DisconnectTime>1464647804136</DisconnectTime>
+<ReleaseTime>1464647804136</ReleaseTime>
+<CompleteTime>1464647804136</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">0</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">100</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">0</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000010" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281689789024142" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="ln">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300585</InternalIndex>
+<OrigParty xsi:type="NetworkTrunkPartyType" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<SIPCallId>ESGSCA39211922@172.16.131.4</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkname="IFR-Trunk for MGCF on server amgc02">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>41BA035F@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">141430884821423</RequestedAddr>
+<DestAddr type="e164">+61999884821423</DestAddr>
+<RoutedAddr type="unknown">1423430884821423</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03CFC65C0000001A</icidvalue>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647796622</IcSeizeTime>
+<OgSeizeTime>1464647796924</OgSeizeTime>
+<RingingTime>1464647797252</RingingTime>
+<ConnectTime>1464647797301</ConnectTime>
+<DisconnectTime>1464647804174</DisconnectTime>
+<ReleaseTime>1464647804174</ReleaseTime>
+<CompleteTime>1464647804174</CompleteTime>
+<UDAs><UDA id="1">0</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">0</UDA>
+<UDA id="4">0</UDA>
+<UDA id="5">1423</UDA>
+<UDA id="6">43</UDA>
+<UDA id="7">0</UDA>
+<UDA id="8">1884001</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">205</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">1</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000011" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281694084006635" connected="true">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300586</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAJxVzFPjI3rqk26RGjbWjZKBSFSIRshe30P6JcUA1xAztdjUS5IKSPkf4WLDmjdaVs28OEUnOLQWfNpwh/aqgF0-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="NATPOI1414-1411-299" trunkname="IFR-Oracle IN-SCP">
+<TrunkGroupId>0</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>BE485B1E@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">1800219315</RequestedAddr>
+<DestAddr type="e164">+611800219315</DestAddr>
+<RoutedAddr type="national">141421800219315</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03D002EA0000001B</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647811819</IcSeizeTime>
+<OgSeizeTime>1464647812068</OgSeizeTime>
+<RingingTime/>
+<ConnectTime>1464647812860</ConnectTime>
+<DisconnectTime>1464647818907</DisconnectTime>
+<ReleaseTime>1464647818907</ReleaseTime>
+<CompleteTime>1464647818907</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">0</UDA>
+<UDA id="6">0</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">100</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">0</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+<Call seqnum="0000000012" error="no" longcall="false" testcall="false" class="0" operator="false" correlator="CFS281698378988322" connected="false">
+<CallType>Other</CallType>
+<Features/>
+<ReleasingParty>Orig</ReleasingParty>
+<ReleaseReason type="q850" loc="u">16</ReleaseReason>
+<ReleaseReason type="internal">No error</ReleaseReason>
+<InternalIndex>40300587</InternalIndex>
+<OrigParty xsi:type="PBXPartyType" subscribergroup="Default" billingtype="flat rate" privacy="false" cpc="normal" ani-ii="00">
+<TrunkGroup type="sip">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SubscriberAddr type="e164">+61290960450</SubscriberAddr>
+<CallingPartyAddr type="e164">+61290960452</CallingPartyAddr>
+<ChargeAddr type="e164">+61290960450</ChargeAddr>
+<SIPCallId>0gQAAC8WAAACBAAALxYAAD9rwHkYBkuMb+M4B57PHVem59PyJgDEkFEL5aW8yROh4bxh+kZiJLvydQxNpGlc94VoOJFTUJLWQn/FIUVyTnc-@10.136.230.80</SIPCallId>
+</OrigParty>
+<TermParty xsi:type="NetworkTrunkPartyType">
+<TrunkGroup type="sip" trunkaccounting="Adnum 710 Test Trunk" trunkname="SYD1SSTINTL">
+<TrunkGroupId>65535</TrunkGroupId>
+<TrunkMemberId>0</TrunkMemberId>
+</TrunkGroup>
+<SIPCallId>53E24A5E@10.136.228.10</SIPCallId>
+</TermParty>
+<RoutingInfo>
+<RequestedAddr type="unknown">00111212987654321</RequestedAddr>
+<DestAddr type="e164">+611212987654321</DestAddr>
+<RoutedAddr type="national">1423300111212987654321</RoutedAddr>
+<CallingPartyRoutedAddr type="national">290960452</CallingPartyRoutedAddr>
+<CallingPartyOrigAddr type="national">61290960452</CallingPartyOrigAddr>
+</RoutingInfo>
+<CarrierSelectInfo>
+<CarrierOperatorInvolved>False</CarrierOperatorInvolved>
+<SelectionMethod>NetworkDefault</SelectionMethod>
+<NetworkId>0</NetworkId>
+</CarrierSelectInfo>
+<SignalingInfo>
+<MediaCapabilityRequested>Speech</MediaCapabilityRequested>
+<PChargingVector>
+<icidvalue>03D03B220000001C</icidvalue>
+<icidgeneratedat>10.136.228.10</icidgeneratedat>
+</PChargingVector>
+</SignalingInfo>
+<IcSeizeTime>1464647826210</IcSeizeTime>
+<OgSeizeTime>1464647826460</OgSeizeTime>
+<RingingTime>1464647826700</RingingTime>
+<ConnectTime/>
+<DisconnectTime>1464647834030</DisconnectTime>
+<ReleaseTime>1464647834030</ReleaseTime>
+<CompleteTime>1464647834030</CompleteTime>
+<UDAs><UDA id="1">1474</UDA>
+<UDA id="2">0</UDA>
+<UDA id="3">1474</UDA>
+<UDA id="4">1474</UDA>
+<UDA id="5">1423</UDA>
+<UDA id="6">3</UDA>
+<UDA id="7">1055</UDA>
+<UDA id="8">0</UDA>
+<UDA id="9">1</UDA>
+<UDA id="10">20</UDA>
+<UDA id="11">0</UDA>
+<UDA id="12">11</UDA>
+<UDA id="13">0</UDA>
+</UDAs>
+</Call>
+</CDRs>
+<FileFooter>
+<LastModTime>1464647834032</LastModTime>
+<NumCDRs>12</NumCDRs>
+<DataErroredCDRs>0</DataErroredCDRs>
+<WriteErroredCDRs>0</WriteErroredCDRs>
+</FileFooter>
+</File>
