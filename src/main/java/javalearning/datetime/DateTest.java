@@ -39,6 +39,95 @@ public class DateTest {
 
 		// Test 24 hour
 		test09();
+		
+		// convert time between 2 timezone
+		try {
+			convert();
+		} catch (ParseException e1) {
+			e1.printStackTrace();
+		}
+		
+		// convert system time to target timezone
+		try {
+			convert2();
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static void convert2() throws ParseException {
+		// This is the Miliseconds in UTC
+		Long sourceTs = 1466397078212L; //1464647701013L;
+		System.out.println("Show in source miliseconds: " + sourceTs);
+
+		TimeZone targetTz = TimeZone.getTimeZone("Australia/Adelaide");
+		
+		// Method 2 Only convenient when the long time given is system time
+		// because it seems that when setTimeInMillis, it always use the system timezone
+		
+		Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("Australia/Perth"));
+		calendar.setTimeInMillis(sourceTs);
+		
+		int year = calendar.get(Calendar.YEAR);
+		int month = calendar.get(Calendar.MONTH); // Jan = 0, dec = 11
+		int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+		int hour = calendar.get(Calendar.HOUR); // 12 hour clock
+		int hourOfDay = calendar.get(Calendar.HOUR_OF_DAY); // 24 hour clock
+		int minute = calendar.get(Calendar.MINUTE);
+		int second = calendar.get(Calendar.SECOND);
+		int ampm = calendar.get(Calendar.AM_PM); //0 = AM , 1 = PM
+		
+		//Correct
+		System.out.println("\nyear \t\t: " + year);
+		System.out.println("month \t\t: " + (month+1));
+		System.out.println("dayOfMonth \t: " + dayOfMonth);
+		System.out.println("hour \t\t: " + hourOfDay);
+		System.out.println("minute \t\t: " + minute);
+		System.out.println("second \t\t: " + second);
+		System.out.println(calendar.getTimeInMillis());
+	}
+	
+	public static void convert() throws ParseException {
+		
+		// This is the Miliseconds in UTC
+		Long sourceTs = 1466397078212L; //1464647701013L;
+		System.out.println("Show in source miliseconds: " + sourceTs);
+
+		TimeZone sourceTz = TimeZone.getTimeZone("Australia/Sydney");
+//		TimeZone targetTz = TimeZone.getTimeZone("Australia/Sydney");
+
+//		TimeZone sourceTz = TimeZone.getTimeZone("Australia/Perth");
+		TimeZone targetTz = TimeZone.getTimeZone("Australia/Adelaide");
+		
+		// Source Long -> Source String
+		Date date = new Date(sourceTs);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		String sourceStr = sdf.format(date);
+
+		System.out.println("Shows in source time: " + sourceStr);
+		
+		// Source String + Source Time Zone - > Correct Date
+		SimpleDateFormat sourceSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		sourceSdf.setTimeZone(sourceTz);
+		Date sourceDate = sourceSdf.parse(sourceStr);
+		
+		System.out.println("Shows in system time(method1): " + sourceDate);
+		
+		
+		// Correct Date -> 
+		SimpleDateFormat targetSdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+		targetSdf.setTimeZone(targetTz);
+		String targetStr = targetSdf.format(sourceDate);
+		
+		System.out.println("Shows in target time: " + targetStr);
+		
+		// Get the TimeStamp of target time
+		Date targetDate = sdf.parse(targetStr);
+		Long targetTs = targetDate.getTime();
+		
+		System.out.println("Show in target miliseconds: " + targetTs);
+		System.out.println("Target - source = " + (targetTs - sourceTs) / 1000 / 3600.0);
 	}
 
 	public static void test01() {

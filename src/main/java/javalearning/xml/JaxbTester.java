@@ -30,13 +30,27 @@ import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
 import javalearning.xml.cfs.AddressType;
+import javalearning.xml.cfs.AddressesType;
+import javalearning.xml.cfs.AppServerPartyType;
+import javalearning.xml.cfs.BusinessLinePartyType;
+import javalearning.xml.cfs.CallType;
 import javalearning.xml.cfs.CarrierSelectInfoType;
+import javalearning.xml.cfs.DupType;
+import javalearning.xml.cfs.FailedTrunkGroupsType;
 import javalearning.xml.cfs.FeaturesType;
 import javalearning.xml.cfs.FileType;
+import javalearning.xml.cfs.IndividualLinePartyType;
+import javalearning.xml.cfs.MADNPartyType;
+import javalearning.xml.cfs.MLHGPilotPartyType;
+import javalearning.xml.cfs.NetworkTrunkPartyType;
+import javalearning.xml.cfs.NoPartyPartyType;
+import javalearning.xml.cfs.PBXPartyType;
 import javalearning.xml.cfs.PChargingVectorType;
 import javalearning.xml.cfs.PartyType;
 import javalearning.xml.cfs.RoutingInfoType;
 import javalearning.xml.cfs.SignalingInfoType;
+import javalearning.xml.cfs.SignalingTypeType;
+import javalearning.xml.cfs.TrunkGroupType;
 import javalearning.xml.cfs.UDAsType;
 
 public class JaxbTester {
@@ -89,12 +103,18 @@ public class JaxbTester {
 			"call_routingInfo_routedAddr_value", //RoutedAddr
 			"call_origParty_trunkGroup_trunkaccounting", //trunkaccounting
 			"call_origParty_trunkGroup_trunkGroupId", //TrunkGroupId
-			"call_signalingInfo_mediaCapabilityRequested", //MediaCapabilityType
+			"call_signalingInfo_mediaCapabilityRequested", 
+			"call_signalingInfo_mediaCapabilityUsed", //MediaCapabilityType
 			"callForwardInfo_redirectCount",	//RedirectCount
 
 			"call_signalingInfo_pChargingVector_icidvalue", //icidvalue
 			"call_termParty_trunkGroup_trunkaccounting", //trunkaccounting
-			"call_termParty_trunkGroup_trunkGroupId" //TrunkGroupId
+			"call_termParty_trunkGroup_trunkGroupId", //TrunkGroupId
+			"call_icSeizeTime",
+			"call_origParty_chargeAddr_value",
+
+			"call_termParty_chargeAddr_value",
+			"call_intelligentNetworkInfo_chargeAddr_value"
 		})).add("event", Arrays.asList(new String[]{
 				
 		})).add("footer", Arrays.asList(new String[]{
@@ -136,12 +156,18 @@ public class JaxbTester {
 				"title_routingInfo_routedAddr_value", //RoutedAddr
 				"title_origParty_trunkGroup_trunkaccounting", //trunkaccounting
 				"title_origParty_trunkGroup_trunkGroupId", //TrunkGroupId
-				"title_signalingInfo_mediaCapabilityRequested", //MediaCapabilityType
-				"callForwardInfo_redirectCount",	//RedirectCount
+				"title_signalingInfo_mediaCapabilityRequested", 
+				"title_signalingInfo_mediaCapabilityUsed", //MediaCapabilityType
+				"title_callForwardInfo_redirectCount",	//RedirectCount
 
 				"title_signalingInfo_pChargingVector_icidvalue", //icidvalue
 				"title_termParty_trunkGroup_trunkaccounting", //trunkaccounting
-				"title_termParty_trunkGroup_trunkGroupId" //TrunkGroupId
+				"title_termParty_trunkGroup_trunkGroupId", //TrunkGroupId
+				"title_icSeizeTime",
+				"title_origParty_chargeAddr_value",
+
+				"title_termParty_chargeAddr_value",
+				"title_intelligentNetworkInfo_chargeAddr_value"
 			})).addFieldNameMapping("title_seqnum", "seqnum")  //CallSeqnum
 				.addFieldNameMapping("title_error", "error")
 				.addFieldNameMapping("title_connected", "connected") //connected
@@ -149,38 +175,44 @@ public class JaxbTester {
 				.addFieldNameMapping("title_clazz", "clazz")
 
 				.addFieldNameMapping("title_releasingParty", "releasingParty")
-				.addFieldNameMapping("title_releaseReason_1_type", "releaseReason_1_type")
-				.addFieldNameMapping("title_releaseReason_1_loc", "releaseReason_1_loc")
-				.addFieldNameMapping("title_releaseReason_1_value", "releaseReason_1_value") //ReleaseReason
-				.addFieldNameMapping("title_releaseReason_2_type", "releaseReason_2_type")
+				.addFieldNameMapping("title_releaseReason_1_type", "releaseReasonType1")
+				.addFieldNameMapping("title_releaseReason_1_loc", "releaseReasonLoc1")
+				.addFieldNameMapping("title_releaseReason_1_value", "releaseReason1") //ReleaseReason
+				.addFieldNameMapping("title_releaseReason_2_type", "releaseReasonType2")
 
-				.addFieldNameMapping("title_releaseReason_2_loc", "releaseReason_2_loc")
-				.addFieldNameMapping("title_releaseReason_2_value", "releaseReason_2_value")
+				.addFieldNameMapping("title_releaseReason_2_loc", "releaseReasonLoc2")
+				.addFieldNameMapping("title_releaseReason_2_value", "releaseReason2")
 				.addFieldNameMapping("title_connectTime", "connectTime") //ConnectTime
 				.addFieldNameMapping("title_disconnectTime", "disconnectTime") //DisconnectTime
 				.addFieldNameMapping("title_longcall", "longcall") //longcall
 
-				.addFieldNameMapping("title_udAs_uda_1_value", "udAs_uda_1_value") //UDA1
-				.addFieldNameMapping("title_udAs_uda_2_value", "udAs_uda_2_value") //UDA2
-				.addFieldNameMapping("title_udAs_uda_5_value", "udAs_uda_5_value") //UDA5
-				.addFieldNameMapping("title_udAs_uda_6_value", "udAs_uda_6_value") //UDA6
-				.addFieldNameMapping("title_udAs_uda_10_value", "udAs_uda_10_value") //UDA10
+				.addFieldNameMapping("title_udAs_uda_1_value", "uda1") //UDA1
+				.addFieldNameMapping("title_udAs_uda_2_value", "uda2") //UDA2
+				.addFieldNameMapping("title_udAs_uda_5_value", "uda5") //UDA5
+				.addFieldNameMapping("title_udAs_uda_6_value", "uda6") //UDA6
+				.addFieldNameMapping("title_udAs_uda_10_value", "uda10") //UDA10
 
-				.addFieldNameMapping("title_routingInfo_callingPartyRoutedAddr_type", "routingInfo_callingPartyRoutedAddr_type")
-				.addFieldNameMapping("title_routingInfo_callingPartyRoutedAddr_value", "routingInfo_callingPartyRoutedAddr_value") //CallingPartyAddr
-				.addFieldNameMapping("title_routingInfo_requestedAddr_type", "routingInfo_requestedAddr_type")
-				.addFieldNameMapping("title_routingInfo_requestedAddr_value", "routingInfo_requestedAddr_value") //RequestedAddr
-				.addFieldNameMapping("title_routingInfo_routedAddr_type", "routingInfo_routedAddr_type")
+				.addFieldNameMapping("title_routingInfo_callingPartyRoutedAddr_type", "callingPartyAddrType")
+				.addFieldNameMapping("title_routingInfo_callingPartyRoutedAddr_value", "callingPartyAddr") //CallingPartyAddr
+				.addFieldNameMapping("title_routingInfo_requestedAddr_type", "requestedAddrType")
+				.addFieldNameMapping("title_routingInfo_requestedAddr_value", "requestedAddr") //RequestedAddr
+				.addFieldNameMapping("title_routingInfo_routedAddr_type", "routedAddrType")
 
-				.addFieldNameMapping("title_routingInfo_routedAddr_value", "routingInfo_routedAddr_value") //RoutedAddr
-				.addFieldNameMapping("title_origParty_trunkGroup_trunkaccounting", "origParty_trunkGroup_trunkaccounting") //trunkaccounting
-				.addFieldNameMapping("title_origParty_trunkGroup_trunkGroupId", "origParty_trunkGroup_trunkGroupId") //TrunkGroupId
-				.addFieldNameMapping("title_signalingInfo_mediaCapabilityRequested", "signalingInfo_mediaCapabilityRequested") //MediaCapabilityType
-				.addFieldNameMapping("callForwardInfo_redirectCount", "callForwardInfo_redirectCount")	//RedirectCount
+				.addFieldNameMapping("title_routingInfo_routedAddr_value", "routedAddr") //RoutedAddr
+				.addFieldNameMapping("title_origParty_trunkGroup_trunkaccounting", "origTrunkaccounting") //trunkaccounting
+				.addFieldNameMapping("title_origParty_trunkGroup_trunkGroupId", "origTrunkGroupId") //TrunkGroupId
+				.addFieldNameMapping("title_signalingInfo_mediaCapabilityRequested", "mediaCapabilityRequested")
+				.addFieldNameMapping("title_signalingInfo_mediaCapabilityUsed", "mediaCapabilityUsed") //MediaCapabilityType
+				.addFieldNameMapping("title_callForwardInfo_redirectCount", "redirectCount")	//RedirectCount
 
-				.addFieldNameMapping("title_signalingInfo_pChargingVector_icidvalue", "signalingInfo_pChargingVector_icidvalue") //icidvalue
-				.addFieldNameMapping("title_termParty_trunkGroup_trunkaccounting", "termParty_trunkGroup_trunkaccounting")
-				.addFieldNameMapping("title_termParty_trunkGroup_trunkGroupId", "termParty_trunkGroup_trunkGroupId");
+				.addFieldNameMapping("title_signalingInfo_pChargingVector_icidvalue", "icidvalue") //icidvalue
+				.addFieldNameMapping("title_termParty_trunkGroup_trunkaccounting", "termTrunkaccounting")
+				.addFieldNameMapping("title_termParty_trunkGroup_trunkGroupId", "termTrunkGroupId")
+				.addFieldNameMapping("title_icSeizeTime", "icSeizeTime")
+		        .addFieldNameMapping("title_origParty_chargeAddr_value", "origChargeAddr")
+
+		        .addFieldNameMapping("title_termParty_chargeAddr_value", "termChargeAddr")
+		        .addFieldNameMapping("title_intelligentNetworkInfo_chargeAddr_value", "intelligentNetworkChargeAddr");
 		
 		// for every files in the path, parse the file and get the list of lines
 		Arrays.asList(new File("D:\\99 Projects\\07 MetaSwitch\\convert").listFiles(f -> {
@@ -208,7 +240,7 @@ public class JaxbTester {
 			List <Map<String, String>> recordMaps = new ArrayList<>();
 			
 			// write header line			
-			recordMaps.add(parse(cdrFile.getFileHeader(), "header", conf, new HashMap<String, String>()));
+//			recordMaps.add(parse(cdrFile.getFileHeader(), "header", conf, new HashMap<String, String>()));
 			
 			// write title of CDRs
 			recordMaps.add(conf.fieldNameMap);
@@ -217,9 +249,19 @@ public class JaxbTester {
 			cdrFile.getCDRs().getCallOrEvent().forEach((cdr) -> {
 				recordMaps.add(parse(cdr, "call", conf, new HashMap<String, String>()));
 			});
-
+			
+//			cdrFile.getCDRs().getCallOrEvent().
+//			    forEach(c -> {
+//			    	CallType cdr = (CallType) c;
+//			    	if (cdr != null && cdr.getOrigParty() != null && cdr.getOrigParty().getChargeAddr() != null) {
+//			    		System.out.println("chargeAddr:" + ((CallType) c).getOrigParty().getChargeAddr().getValue());
+//			    	} else {
+//			    		System.out.println("NA");
+//			    	}
+//			    	});
+//            System.out.println(recordMaps);
 			// write footer
-			recordMaps.add(parse(cdrFile.getFileFooter(), "footer", conf, new HashMap<String, String>()));
+//			recordMaps.add(parse(cdrFile.getFileFooter(), "footer", conf, new HashMap<String, String>()));
 			
 			System.out.println(String.format("%s has %d records parsed.", file.getPath(), recordMaps.size()));
 			
@@ -279,9 +321,19 @@ public class JaxbTester {
 	
 	private static Map<String, String> parse(Object o, String prefix, CdrConfig conf, Map<String, String> columns) {
 
+		
 		Field[] fields = o.getClass().getDeclaredFields();
+		
+		List <Field> list = new ArrayList<Field>( Arrays.asList(fields));
+		
+		
+		if (hasSuperClass(o.getClass())) {
+			List <Field> listSuper = Arrays.asList(o.getClass().getSuperclass().getDeclaredFields()); 
+			list.addAll(listSuper);
+		}
+		
 
-		Arrays.asList(fields).forEach(field -> {
+		list.forEach(field -> {
 			
 			String fieldName = prefix + "_" +field.getName();
 			
@@ -333,6 +385,7 @@ public class JaxbTester {
 					}
 				} else if (isComplexType(field.getType()) && field.get(o) != null){
 
+					//System.out.println(field.getType() + ":    " + fieldName + " : " + field.get(o) + ": " + field.get(o).getClass().getDeclaredFields().length);
 					parse(field.get(o), fieldName, conf, columns);
 					
 				} else if (isIgnore(field.getType())) {
@@ -347,6 +400,25 @@ public class JaxbTester {
 		});
 		
 		return columns;
+	}
+
+
+
+	private static boolean hasSuperClass(Class<?> clazz) {
+		Set<Class<?>> clazzes = new HashSet<>();
+
+		clazzes.addAll(Arrays.asList(new Class<?>[] { 
+			BusinessLinePartyType.class,
+		    AppServerPartyType.class,
+		    NetworkTrunkPartyType.class,
+		    MLHGPilotPartyType.class,
+		    PBXPartyType.class,
+		    IndividualLinePartyType.class,
+		    NoPartyPartyType.class,
+		    MADNPartyType.class
+		}));
+
+		return clazzes.contains(clazz) || clazz.isEnum();
 	}
 
 	private static boolean isBasicType(Class<?> clazz) {
@@ -380,7 +452,12 @@ public class JaxbTester {
 			SignalingInfoType.class,
 			UDAsType.class,
 			AddressType.class,
-			PChargingVectorType.class
+			PChargingVectorType.class,
+			TrunkGroupType.class,
+			DupType.class,
+			SignalingTypeType.class,
+			AddressesType.class,
+			FailedTrunkGroupsType.class
 		}));
 
 		return clazzes.contains(clazz) || clazz.isEnum();
