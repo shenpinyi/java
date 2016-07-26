@@ -6,6 +6,9 @@ public class Outer {
 
 	public static void main(String[] args) {
 		
+		TestClass t = new TestClass();
+		t = new TestClass();
+		
 		Outer outer = new Outer();
 		outer.setName("Jack");
 		System.out.println(outer.getName());
@@ -41,6 +44,13 @@ public class Outer {
 	}
 	
 	public class Inner {
+		
+		
+		public Inner() {
+			System.out.println("In constructor");
+			
+		}
+		
 		public void setName(String _name) {
 			Outer.this.name = _name;
 		}
@@ -48,5 +58,20 @@ public class Outer {
 		public String getName() {
 			return Outer.this.name;
 		}
+	}
+}
+
+class TestClass {
+	{
+		System.out.println("In non-static block");
+	}
+	
+	static {
+		System.out.println("In static block");
+	}
+	
+	public TestClass() {
+		System.out.println("In constructor");
+		
 	}
 }
