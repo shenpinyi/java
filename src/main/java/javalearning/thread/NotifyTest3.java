@@ -29,13 +29,19 @@ public class NotifyTest3 {
 		public Resturant() {
 		}
 		
-		public synchronized void increaseFood() {
+		public void increaseFood() {
 			food++;
 			total++;
+			synchronized (customers) {
+				customers.notifyAll();
+			}
 		}
 		
-		public synchronized void decreaseFood() {
+		public void decreaseFood() {
 			food--;
+			synchronized (chefs) {
+			    chefs.notifyAll();
+			}
 		}
 		
 		
@@ -48,13 +54,13 @@ public class NotifyTest3 {
 		@Override
 		public void run() {
 			while (true) {
-				synchronized (resturant) {
+				synchronized (resturant.customers) {
 					if (resturant.food > 5) {
 						System.out.println(Thread.currentThread().getName() + 
 								", CHEF: foods are too much, have a rest. food=" + resturant.food);
 						try {
-							resturant.wait(); //wait for someone call me
-							//System.out.println(Thread.currentThread().getName() + ", CHEF: someone is calling, let me work!");
+							resturant.customers.wait(); //wait for someone call me
+							System.out.println(Thread.currentThread().getName() + ", CHEF: someone is calling, let me work!");
 							continue;
 						} catch (InterruptedException e) {
 							e.printStackTrace();
@@ -69,10 +75,7 @@ public class NotifyTest3 {
 					e1.printStackTrace();
 				} // I'm making food...
 				System.out.println(Thread.currentThread().getName() + ", CHEF: food is ready!");
-				synchronized (resturant) {
-					resturant.increaseFood(); // put food out
-					resturant.notifyAll();
-				}
+				resturant.increaseFood(); // put food out
 			}
 		}
 	}
@@ -88,21 +91,18 @@ public class NotifyTest3 {
 		public void run() {
 			while (true) {
 				// take food
-				synchronized (resturant) {
-					try {
-						if (resturant.food <= 0 ) {
-							System.out.println(Thread.currentThread().getName() + 
-									", CUSTOMER: no food, have a rest. food=" + resturant.food);
-							resturant.wait(); // no food? I have to wait
-							//System.out.println(Thread.currentThread().getName() + ", CUSTOMER: chefs are calling, let me try to get food!");
-							continue; // food has been changed, I can go for one
-						}
-						resturant.decreaseFood();
-						System.out.println(Thread.currentThread().getName() + ", CUSTOMER: got a food");
-						resturant.notifyAll();
-					} catch (InterruptedException e) {
-						e.printStackTrace();
+				try {
+					if (resturant.food <= 0 ) {
+						System.out.println(Thread.currentThread().getName() + 
+								", CUSTOMER: no food, have a rest. food=" + resturant.food);
+						resturant.chefs.wait(); // no food? I have to wait
+						//System.out.println(Thread.currentThread().getName() + ", CUSTOMER: chefs are calling, let me try to get food!");
+						continue; // food has been changed, I can go for one
 					}
+					resturant.decreaseFood();
+					System.out.println(Thread.currentThread().getName() + ", CUSTOMER: got a food");
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 				try {
 					//System.out.println(Thread.currentThread().getName() + ", CUSTOMER: it would take me 5 seconds to eat the food");
