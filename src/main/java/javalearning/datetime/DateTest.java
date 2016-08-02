@@ -38,23 +38,50 @@ public class DateTest {
 		// test08();
 
 		// Test 24 hour
-		test09();
+//		test09();
 		
 		// convert time between 2 timezone
-		try {
-			convert();
-		} catch (ParseException e1) {
-			e1.printStackTrace();
-		}
+//		try {
+//			convert();
+//		} catch (ParseException e1) {
+//			e1.printStackTrace();
+//		}
 		
 		// convert system time to target timezone
+//		try {
+//			convert2();
+//		} catch (ParseException e) {
+//			e.printStackTrace();
+//		}
+		
+		test10();
+		
+	}
+	
+	public static void test10() {
+		String time = "20160720235815";//:284482
+		String fmt = "yyyyMMddHHmmss:SSS";
+		String targetFmt = "yyyy-MM-dd HH:mm:ss";
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(fmt);
 		try {
-			convert2();
+			String sourceTime;
+			if (time.length() > fmt.length()) {
+				sourceTime = time.substring(0, fmt.length());
+			} else {
+				sourceTime = time;
+			}
+			Date date = sdf.parse(sourceTime);
+			date.getTime();
+			SimpleDateFormat targetSdf = new SimpleDateFormat(targetFmt);
+			String targetTime = targetSdf.format(date);
+			System.out.println(targetTime);
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 		
 	}
+	
 	
 	public static void convert2() throws ParseException {
 		// This is the Miliseconds in UTC
