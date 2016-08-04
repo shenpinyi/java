@@ -30,6 +30,30 @@ public class StringTest {
                 Integer.valueOf(outgoingSd != null && !outgoingSd.equals("") ? outgoingSd : "0"));
 
 	    System.out.println(s1);
+	    
+	    String routeId = "ICR_DDD_AAA_EEE_WWWW";
+	    String trunkType = "";
+	    String trunkName = "";
+	    String trunkLocation = "";
+	    String resourceId = "";
+	    String serviceKey = "";
+
+	    StringTokenizer routeIdTokens = new StringTokenizer(routeId, "_");
+	    if (routeIdTokens.hasMoreTokens()) {
+	        trunkType = routeIdTokens.nextToken();
+	    }
+	    if (routeIdTokens.hasMoreTokens()) {
+	        trunkName = routeIdTokens.nextToken();
+	    }
+	    if (routeIdTokens.hasMoreTokens()) {
+	        trunkLocation = routeIdTokens.nextToken();
+	    }
+	    resourceId = trunkType + "_" + trunkName + "_" + trunkLocation;
+	    System.out.println(resourceId + ", " +
+	    		trunkType + ", " +
+	    		trunkName + ", " +
+	    		trunkLocation + ", ");
+
 	}
 
 }
