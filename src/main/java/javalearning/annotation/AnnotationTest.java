@@ -2,7 +2,7 @@ package javalearning.annotation;
 
 import java.lang.annotation.Annotation;
 
-@MyTag(name = "AnnotationTest")
+@MyTest(name = "AnnotationTest")
 public class AnnotationTest {
 
 	public static void main(String[] args) {
@@ -15,7 +15,7 @@ public class AnnotationTest {
 		}
 	}
 	
-	@MyTag(name = "test01")
+	@MyTest(name = "test01")
 	public void test01() throws NoSuchMethodException, SecurityException {
 
 		
